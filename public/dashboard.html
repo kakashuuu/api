@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admindanzgtg API Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Admindanzgtg API Dashboard</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/docs">API Docs</a>
+            <a href="/apikey">Get API Key</a>
+        </nav>
+    </header>
+    <main>
+        <div class="dashboard-container">
+            <aside class="sidebar">
+                <h2>Dashboard</h2>
+                <ul>
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Usage Stats</a></li>
+                    <li><a href="#">Manage API Keys</a></li>
+                </ul>
+            </aside>
+            <section class="content">
+                <h2>API Usage Statistics</h2>
+                <canvas id="apiChart"></canvas>
+            </section>
+        </div>
+    </main>
+    <script>
+        // Generate dummy API usage statistics
+        const ctx = document.getElementById('apiChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'API Calls',
+                    data: [120, 190, 300, 500, 200, 300],
+                    borderColor: 'rgb(75, 192, 192)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+</body>
+</html>
