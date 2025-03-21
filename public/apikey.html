@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get API Key</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Get API Key</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/docs">API Documentation</a>
+            <a href="/apikey">Get API Key</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Request an API Key</h2>
+        <button onclick="generateApiKey()">Get API Key</button>
+        <p id="apiKeyDisplay"></p>
+    </main>
+    <script>
+        function generateApiKey() {
+            fetch('/generate_apikey')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('apiKeyDisplay').innerText = "Your API Key: " + data.apiKey;
+                    } else {
+                        document.getElementById('apiKeyDisplay').innerText = "Failed to generate API Key.";
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
